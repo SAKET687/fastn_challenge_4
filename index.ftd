@@ -1,0 +1,74 @@
+-- ftd.column:
+background.solid: rgb(108,238,226)
+height: fill-container
+width: fill-container
+padding.px: 65
+align-content: center
+
+-- ftd.text: My Experience
+region: h3
+margin-bottom.px: 25
+
+-- box: `fastn` Stack
+
+`fastn` stands out as a remarkably user-friendly full-stack development framework, accommodating developers of varying experience levels. Supported by a vibrant community, robust documentation, and video tutorials, `fastn` ensures developers have the resources they need. The framework is actively maintained. I'm enjoying learning this new stack.
+
+-- end: ftd.column
+
+
+-- component box:
+caption title: Header
+body body: Body/Description
+boolean $open: false
+boolean $highlight: false
+ftd.color highlight-color: $highlightcolor
+
+
+-- ftd.column:
+width: fill-container
+spacing.fixed.px: 10
+border-width.px: 4
+
+-- ftd.row:
+width: fill-container
+spacing: space-between
+border-bottom-width.px: 2
+padding.px: 10
+background.solid if {box.highlight}: $box.highlight-color
+$on-click$: $toggle($value = $box.open)
+$on-mouse-enter$: $ftd.set-bool($a = $box.highlight, v = true)
+$on-mouse-leave$: $ftd.set-bool($a = $box.highlight, v = false)
+
+-- ftd.text: $box.title
+
+
+-- ftd.image: down-arrow.jpeg
+height.fixed.px: 20
+width.fixed.px: 20
+border-radius.px: 10
+if: {!box.open}
+
+-- ftd.image: up-arrow.jpeg
+height.fixed.px: 20
+width.fixed.px: 20
+border-radius.px: 10
+if: {box.open}
+
+-- end: ftd.row
+
+-- ftd.text: $box.body
+padding.px: 10
+height: hug-content
+if: {box.open}
+
+-- end: ftd.column 
+
+-- end: box
+
+-- void toggle(value):
+boolean $value:
+
+value = !value
+
+-- ftd.color highlightcolor:
+light: rgb(168,214,210)
